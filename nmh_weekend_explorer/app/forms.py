@@ -1,2 +1,0 @@
-# ActivityForm, ActivityFilterForm, LoginForm
-

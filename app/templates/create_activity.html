@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Create Activity{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h1 class="mb-4">Create a New Activity</h1>
+
+  <p class="text-muted">
+    This form is only a demo and does not actually submit data.
+  </p>
+
+  <form>
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input class="form-control" placeholder="Sunrise hike to Crag Mountain">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Short description</label>
+      <textarea class="form-control" rows="3"
+        placeholder="Easy morning hike with a view of the valley and river."></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Category</label>
+      <select class="form-select">
+        <option>Outdoors</option>
+        <option>Food</option>
+        <option>Shopping</option>
+        <option>Sports</option>
+        <option>On campus</option>
+      </select>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label class="form-label">Date</label>
+        <input type="date" class="form-control">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Time</label>
+        <input type="time" class="form-control" value="10:00">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Max participants</label>
+        <input type="number" class="form-control" min="1" placeholder="8">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Location name</label>
+      <input class="form-control" placeholder="Crag Mountain trailhead">
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <label class="form-label">Latitude</label>
+        <input class="form-control" placeholder="42.679">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Longitude</label>
+        <input class="form-control" placeholder="-72.561">
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-success">
+      Submit (demo only)
+    </button>
+    <a href="{{ url_for('my_activities') }}" class="btn btn-link">
+      Back to My Activities
+    </a>
+  </form>
+</div>
+{% endblock %}

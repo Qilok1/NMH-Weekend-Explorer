@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}My Activities{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h1 class="mb-4">My Activities</h1>
+
+  <p class="text-muted">
+    This page will eventually pull real data from the database.
+  </p>
+
+  <!-- Hosted activities -->
+  <h3 class="mt-4">Activities I am hosting</h3>
+  <div class="row g-3">
+    {% for activity in hosted_activities %}
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ activity.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            {{ activity.date }} at {{ activity.time }} · {{ activity.location }}
+          </h6>
+          <p class="card-text">{{ activity.description }}</p>
+          <p class="mb-1">
+            <strong>Interest:</strong>
+            {{ activity.current_participants }}/{{ activity.max_participants or "∞" }} students
+          </p>
+          <p class="mb-2">
+            <span class="badge bg-info">Host</span>
+            {% if activity.is_pending %}
+              <span class="badge bg-warning text-dark">Waiting for approval</span>
+            {% else %}
+              <span class="badge bg-success">Approved</span>
+            {% endif %}
+          </p>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-sm btn-outline-primary">View details</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <p class="text-muted">You are not hosting any activities yet.</p>
+    {% endfor %}
+  </div>
+
+  <h3 class="mt-5">Activities I am joining</h3>
+  <div class="row g-3">
+    {% for activity in joined_activities %}
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ activity.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            {{ activity.date }} at {{ activity.time }} · {{ activity.location }}
+          </h6>
+          <p class="card-text">{{ activity.description }}</p>
+          <p class="mb-2">
+            <span class="badge bg-secondary">Joined</span>
+            {% if activity.is_full %}
+              <span class="badge bg-danger">Trip is full</span>
+            {% endif %}
+          </p>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-sm btn-outline-primary">View details</button>
+            <button type="button" class="btn btn-sm btn-outline-warning">Leave trip</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <p class="text-muted">You have not joined any activities yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
