@@ -69,3 +69,4 @@ def delete_activity(self, activity_id: int):
         self.message_type = "error"
     finally:
         db.close()
+ 
